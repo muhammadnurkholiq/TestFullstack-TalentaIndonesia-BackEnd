@@ -13,7 +13,7 @@ const jwt = require("jsonwebtoken");
 // register
 exports.register = async (req, res) => {
   try {
-    // get data from input
+    // get input data
     const data = req.body;
 
     // validate input
@@ -62,7 +62,7 @@ exports.register = async (req, res) => {
         id: newData.id,
       },
       attributes: {
-        exclude: ["createdAt", "updatedAt"],
+        exclude: ["createdAt", "updatedAt", "password"],
       },
     });
 
@@ -84,12 +84,11 @@ exports.register = async (req, res) => {
 // login
 exports.login = async (req, res) => {
   try {
-    // get data from input
+    // get input data
     const data = req.body;
 
     // validate input
     const schema = Joi.object({
-      name: Joi.string().min(4).required(),
       email: Joi.string().email().min(4).required(),
       password: Joi.string().min(4).required(),
     });

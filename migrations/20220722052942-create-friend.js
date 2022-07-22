@@ -17,6 +17,15 @@ module.exports = {
       age: {
         type: Sequelize.INTEGER,
       },
+      idUser: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "users",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      },
       createdAt: {
         allowNull: false,
         defaultValue: Sequelize.fn("now"),

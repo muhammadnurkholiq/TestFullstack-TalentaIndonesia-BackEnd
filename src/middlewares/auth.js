@@ -1,7 +1,7 @@
 // jwt
 const jwt = require("jsonwebtoken");
 
-exports.auth = async (req, res) => {
+exports.auth = async (req, res, next) => {
   const authHeader = req.header("Authorization");
   const token = authHeader && authHeader.split(" ")[1];
   // check if user send token via Authorization header or not
