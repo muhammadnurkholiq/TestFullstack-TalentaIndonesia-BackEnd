@@ -70,8 +70,13 @@ exports.addFriend = async (req, res) => {
 // get all friend
 exports.getFriends = async (req, res) => {
   try {
+    // get user id
+    const idUser = req.user.id;
     // get data friend
     const friendData = await friend.findAll({
+      where: {
+        idUser,
+      },
       include: {
         model: user,
         as: "user",
